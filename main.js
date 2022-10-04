@@ -1,8 +1,8 @@
 require('./config')
 const {
-  useSingleFileAuthState,
+  UseMultiFileAuthState,
   makeInMemoryStore,
-  makeWALegacySocket,
+  makeWASocket,
   DisconnectReason
 } = require('@adiwajshing/baileys')
 const WebSocket = require('ws')
@@ -73,7 +73,7 @@ loadDatabase()
 
 
 global.authFile = `${opts._[0] || 'session'}.data.json`
-const { state, saveState } = useSingleFileAuthState(global.authFile)
+const { state, saveState } = UseMultiFileAuthState(global.authFile)
 
 //const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
